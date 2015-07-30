@@ -8,7 +8,40 @@
  */
 
 defined('_JEXEC') or die;
+if ($jq == 1) {
+JHtml::_('jquery.framework');}
+$document->addScript(JURI::base() . 'modules/mod_gumberowl/assets/owl.carousel.min.js');
 
+if ($gumberCarousel == 'O') {
+    $document->addScriptDeclaration('jQuery(document).ready(function () {
+            jQuery("#' . $owl_id . '").owlCarousel({
+                autoPlay: ' . $gumberspeed . ',
+                navigation: false, 
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true,
+                pagination:'.$paginationbool.',
+            });
+        });');
+} elseif ($gumberCarousel == 'I') {
+    $document->addScriptDeclaration('jQuery(document).ready(function () {
+            jQuery("#' . $owl_id . '").owlCarousel({
+                autoPlay: ' . $gumberspeed . ', 
+                items : ' . $gumberitems . ',
+                itemsDesktop : [1199,3],
+                itemsDesktopSmall : [979,3]
+            });
+        });');
+}elseif ($gumberCarousel == 'L') {
+    $document->addScriptDeclaration('jQuery(document).ready(function () {
+            jQuery("#' . $owl_id . '").owlCarousel({
+                autoPlay: ' . $gumberspeed . ', 
+                items : ' . $gumberitems . ',
+                itemsDesktop : [1199,3],
+                itemsDesktopSmall : [979,3]
+            });
+        });');
+}
 ?>
 
 <div id="<?php echo $owl_id; ?>" class="owl-carousel owl-theme">
@@ -43,6 +76,3 @@ defined('_JEXEC') or die;
     <div class="item"><img src="<?php echo $gumberimage10; ?>" alt="mytext"></div>
     <?php    endif; ?>
 </div>
-<?php
-
-?>

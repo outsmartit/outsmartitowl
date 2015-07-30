@@ -10,32 +10,15 @@ $document->addStyleSheet(JURI::base() . '/modules/mod_gumberowl/assets/owl.carou
 $gumberCarousel = $params->get('carousel_type');
 $gumberspeed = $params->get('CarSpeed');
 $gumberitems = $params->get('nrOfItems');
+$pagination = $params->get('pagination');
+if ($pagination){
+    $paginationool = 'true';
+}
+else{
+    $paginationbool = 'false';
+}
 $jq = $params->get('add_jquery');
 $owl_id = "owl-demo-" . $module->id;
-if ($jq == 1) {
-    JHtml::_('jquery.framework');
-    $document->addScript(JURI::base() . 'modules/mod_gumberowl/assets/owl.carousel.min.js');
-}
-if ($gumberCarousel == 'O') {
-    $document->addScriptDeclaration('jQuery(document).ready(function () {
-            jQuery("#' . $owl_id . '").owlCarousel({
-                autoPlay: ' . $gumberspeed . ',
-                navigation: false, 
-                slideSpeed: 300,
-                paginationSpeed: 400,
-                singleItem: true
-            });
-        });');
-} elseif ($gumberCarousel == 'I') {
-    $document->addScriptDeclaration('jQuery(document).ready(function () {
-            jQuery("#' . $owl_id . '").owlCarousel({
-                autoPlay: ' . $gumberspeed . ', 
-                items : ' . $gumberitems . ',
-                itemsDesktop : [1199,3],
-                itemsDesktopSmall : [979,3]
-            });
-        });');
-}
 
 
 $gumberimage1 = $params->get('image1');

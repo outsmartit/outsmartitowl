@@ -7,7 +7,7 @@
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <authorEmail>info@outsmartit.be</authorEmail>
     <authorUrl>www.outsmartit.be</authorUrl>
-    <version>3.0.0</version>
+    <version>1.0.1</version>
     <description>MOD_GUMBEROWL_XML_DESCRIPTION</description>
     <files>
         <filename module="mod_gumberowl">mod_gumberowl.php</filename>
@@ -19,6 +19,8 @@
     <languages folder="language">
         <language tag="en-GB">en-GB/en-GB.mod_gumberowl.ini</language>
         <language tag="en-GB">en-GB/en-GB.mod_gumberowl.sys.ini</language>
+        <language tag="en-GB">nl-NL/nl-NL.mod_gumberowl.ini</language>
+        <language tag="en-GB">nl-NL/nl-NL.mod_gumberowl.sys.ini</language>
     </languages>
     <help key="JHELP_EXTENSIONS_MODULE_MANAGER_GUMBEROWL" />
     <config>
@@ -95,6 +97,16 @@
                 label="MOD_GUMBEROWL_FIELD_SPEED_LABEL"
                 description="MOD_GUMBEROWL_FIELD_SPEED_DESC"
                        default="3000" first="1000" last="10000" step="1000"/>
+                <field name="pagination"
+                type = "radio"
+                class="btn-group"
+                label="MOD_GUMBEROWL_FIELD_PAGINATION_LABEL"
+                description="MOD_GUMBEROWL_FIELD_PAGINATION_DESC"
+                       default="1">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                    
+                </field>
                 <field name="add_jquery"
                 type = "radio"
                 class="btn-group"
