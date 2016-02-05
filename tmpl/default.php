@@ -1,16 +1,18 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  mod_gumberowl
+ * @subpackage  mod_outsmartitowl
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-
 defined('_JEXEC') or die;
 if ($jq == 1) {
-JHtml::_('jquery.framework');}
-$document->addScript(JURI::base() . 'modules/mod_gumberowl/assets/owl.carousel.min.js');
+    JHtml::_('jquery.framework');
+}
+
+$document->addScript(JURI::base() . 'modules/mod_outsmartitowl/assets/owl.carousel.min.js');
+
 
 if ($gumberCarousel == 'O') {
     $document->addScriptDeclaration('jQuery(document).ready(function () {
@@ -20,7 +22,8 @@ if ($gumberCarousel == 'O') {
                 slideSpeed: 300,
                 paginationSpeed: 400,
                 singleItem: true,
-                pagination:'.$paginationbool.',
+                pagination:' . $paginationbool . ', 
+                navigation:' . $navigationbool . ',    
             });
         });');
 } elseif ($gumberCarousel == 'I') {
@@ -28,15 +31,19 @@ if ($gumberCarousel == 'O') {
             jQuery("#' . $owl_id . '").owlCarousel({
                 autoPlay: ' . $gumberspeed . ', 
                 items : ' . $gumberitems . ',
+                pagination:' . $paginationbool . ', 
+                navigation:' . $navigationbool . ', 
                 itemsDesktop : [1199,3],
                 itemsDesktopSmall : [979,3]
             });
         });');
-}elseif ($gumberCarousel == 'L') {
+} elseif ($gumberCarousel == 'L') {
     $document->addScriptDeclaration('jQuery(document).ready(function () {
             jQuery("#' . $owl_id . '").owlCarousel({
                 autoPlay: ' . $gumberspeed . ', 
                 items : ' . $gumberitems . ',
+                pagination:' . $paginationbool . ', 
+                navigation:' . $navigationbool . ',     
                 itemsDesktop : [1199,3],
                 itemsDesktopSmall : [979,3]
             });
@@ -45,34 +52,46 @@ if ($gumberCarousel == 'O') {
 ?>
 
 <div id="<?php echo $owl_id; ?>" class="owl-carousel owl-theme">
-    <?php if($gumberimage1) : ?>
-    <div class="item"><img src="<?php echo $gumberimage1; ?>" alt="mytext"></div>
-    <?php endif; ?>
-    <?php if($gumberimage2) : ?>
-    <div class="item"><img src="<?php echo $gumberimage2; ?>" alt="mytext"></div>
-    <?php endif; ?>
-    <?php if($gumberimage3) : ?>
-    <div class="item"><img src="<?php echo $gumberimage3; ?>" alt="mytext"></div>
-    <?php    endif; ?>
-    <?php if($gumberimage4) : ?>
-    <div class="item"><img src="<?php echo $gumberimage4; ?>" alt="mytext"></div>
-    <?php    endif; ?>
-    <?php if($gumberimage5) : ?>
-    <div class="item"><img src="<?php echo $gumberimage5; ?>" alt="mytext"></div>
-    <?php    endif; ?>
-    <?php if($gumberimage6) : ?>
-    <div class="item"><img src="<?php echo $gumberimage6; ?>" alt="mytext"></div>
-    <?php    endif; ?>
-     <?php if($gumberimage7) : ?>
-    <div class="item"><img src="<?php echo $gumberimage7; ?>" alt="mytext"></div>
-    <?php    endif; ?>
-     <?php if($gumberimage8) : ?>
-    <div class="item"><img src="<?php echo $gumberimage8; ?>" alt="mytext"></div>
-    <?php    endif; ?>
-     <?php if($gumberimage9) : ?>
-    <div class="item"><img src="<?php echo $gumberimage9; ?>" alt="mytext"></div>
-    <?php    endif; ?>
-     <?php if($gumberimage10) : ?>
-    <div class="item"><img src="<?php echo $gumberimage10; ?>" alt="mytext"></div>
-    <?php    endif; ?>
+
+    <?php
+    if ($bigcaption) {
+        $wrapperclass="carousel-wrapper-big";
+        $captionclass="carousel-caption-big";
+    } else {
+        $wrapperclass="carousel-wrapper-small";
+        $captionclass="carousel-caption-small";
+    }
+        
+    for ($i = 1; $i < 11; $i++) {
+        $number = 'image' . $i;
+        $captionnr = 'caption' . $i;
+        $titlenr = 'title' . $i;
+        $linknr = 'link'.$i;
+        if ($gumber_img[$number]) {
+            if ($caption) {
+                if (!$linknr){
+                    $newlink="#";
+                }
+                else {
+                    $newlink = $gumber_img[$linknr];
+                }
+                echo '<div class="item myrelative">'
+                .   ' <img src="' . $gumber_img[$number] . ' " alt="' . $gumber_img[$titlenr] . '">
+                        <a href="'.$newlink.'">
+                        <div class="'.$wrapperclass.'">
+                            <div class="'.$captionclass.'">
+                                <h5>' . $gumber_img[$titlenr] . '</h5>
+                                <div>' . $gumber_img[$captionnr] . '</div>
+                            </div>
+                        </div>
+                        </a>
+                    </div>';
+            } else {
+                echo '<div class="item">'
+                . '<img src="' . $gumber_img[$number] . ' " alt="'.$gumber_img[$titlenr].'">
+                    </div>';
+            }
+        }
+    }
+    ?>
 </div>

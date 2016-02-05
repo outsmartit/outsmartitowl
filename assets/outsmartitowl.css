@@ -1,0 +1,53 @@
+/* 
+    CSS file to adjust caption position
+
+    Created on : Aug 24, 2015, 1:27:07 PM
+    Author     : outsmartit.be
+*/
+.owl-item{
+    position: relative;
+}
+.carousel-caption-small{
+    position: absolute;
+    background-color: rgba(128,128,128,0.7);
+    width: 100%;
+    color: ivory;
+    bottom: 0px;
+    left: 0px;
+    padding-left: 10px;
+    text-align:center;
+}
+.carousel-caption-small h5{
+    color : yellow;
+    margin-bottom: 0px;
+}
+
+.carousel-wrapper-big{
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+    right:0;
+    left: 0px;
+    font: 0/0 a;
+}
+.carousel-wrapper-big:before {
+    content: ' ';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;    
+}
+.carousel-caption-big{
+ /*   background-color: rgba(128,128,128,0.7);*/
+    font: 20px/1 Arial, sans-serif;
+    display: inline-block;
+    width: 100%;
+    color: ivory;
+    vertical-align: middle;
+    padding-left: 10%;
+
+}
+.carousel-caption-big h5{
+    font-size: 5rem;
+    color : yellow;
+    margin-bottom: 0px;
+}
