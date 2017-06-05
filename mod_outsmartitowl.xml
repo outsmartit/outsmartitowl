@@ -2,12 +2,12 @@
 <extension type="module" version="3.1" client="site" method="upgrade">
     <name>mod_outsmartitowl</name>
     <author>Diederik</author>
-    <creationDate>March 2016</creationDate>
-    <copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+    <creationDate>June 2017</creationDate>
+    <copyright>Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <authorEmail>info@outsmartit.be</authorEmail>
     <authorUrl>www.outsmartit.be</authorUrl>
-    <version>1.0.2</version>
+    <version>2.0.1</version>
     <description>MOD_OUTSMARTITOWL_XML_DESCRIPTION</description>
     <files>
         <filename module="mod_outsmartitowl">mod_outsmartitowl.php</filename>
@@ -19,8 +19,8 @@
     <languages folder="language">
         <language tag="en-GB">en-GB/en-GB.mod_outsmartitowl.ini</language>
         <language tag="en-GB">en-GB/en-GB.mod_outsmartitowl.sys.ini</language>
-        <language tag="en-GB">nl-NL/nl-NL.mod_outsmartitowl.ini</language>
-        <language tag="en-GB">nl-NL/nl-NL.mod_outsmartitowl.sys.ini</language>
+        <language tag="nl-NL">nl-NL/nl-NL.mod_outsmartitowl.ini</language>
+        <language tag="nl-NL">nl-NL/nl-NL.mod_outsmartitowl.sys.ini</language>
     </languages>
     <help key="JHELP_EXTENSIONS_MODULE_MANAGER_OUTSMARTITOWL" />
     <config>
@@ -242,6 +242,24 @@
                 label="MOD_OUTSMARTITOWL_FIELD_ITEMS_LABEL"
                 description="MOD_OUTSMARTITOWL_FIELD_ITEMS_DESC"
                        default="3" first="2" last="5" step="1"/> 
+                <field name="autoplay"
+                type = "radio"
+                class="btn-group"
+                label="MOD_OUTSMARTITOWL_FIELD_AUTOPLAY_LABEL"
+                description="MOD_OUTSMARTITOWL_FIELD_AUTOPLAY_DESC"
+                       default="1">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>     
+                </field>
+                <field name="loop"
+                type = "radio"
+                class="btn-group"
+                label="MOD_OUTSMARTITOWL_FIELD_LOOP_LABEL"
+                description="MOD_OUTSMARTITOWL_FIELD_LOOP_DESC"
+                       default="0">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>     
+                </field>
                 <field name="CarSpeed"
                 type = "integer"
                 label="MOD_OUTSMARTITOWL_FIELD_SPEED_LABEL"
@@ -322,6 +340,11 @@
             </fieldset>
         </fields>
     </config>
+    <updateservers>
+        <server type="extension" priority="1" name="mod_outsmartitowl">
+            https://www.outsmartit.be/updates/outsmartowl.xml
+        </server>
+    </updateservers>
 </extension>
 
 

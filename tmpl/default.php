@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  mod_outsmartitowl
  *
- * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die;
@@ -17,22 +17,27 @@ $document->addScript(JURI::base() . 'modules/mod_outsmartitowl/assets/owl.carous
 if ($gumberCarousel == 'O') {
     $document->addScriptDeclaration('jQuery(document).ready(function () {
             jQuery("#' . $owl_id . '").owlCarousel({
-                autoPlay: ' . $gumberspeed . ',
+                autoplay: '. $autoplay .',
+                loop: '. $loop .',
                 navigation: false, 
-                slideSpeed: 300,
-                paginationSpeed: 400,
-                singleItem: true,
-                pagination:' . $paginationbool . ', 
-                navigation:' . $navigationbool . ',    
+                dotsSpeed: 400,
+                items: 1,
+                dots:' . $paginationbool . ', 
+                nav:' . $navigationbool . ',    
             });
         });');
+   /* $document->addScriptDeclaration('jQuery(document).ready(function () {
+            jQuery(".owl-carousel").owlCarousel() 
+                });');*/
 } elseif ($gumberCarousel == 'I') {
     $document->addScriptDeclaration('jQuery(document).ready(function () {
             jQuery("#' . $owl_id . '").owlCarousel({
-                autoPlay: ' . $gumberspeed . ', 
+                autoplay: '. $autoplay .',
+                loop: '. $loop .',
+                autoplaySpeed: ' . $gumberspeed . ', 
                 items : ' . $gumberitems . ',
-                pagination:' . $paginationbool . ', 
-                navigation:' . $navigationbool . ', 
+                dots:' . $paginationbool . ', 
+                nav:' . $navigationbool . ', 
                 itemsDesktop : [1199,3],
                 itemsDesktopSmall : [979,3]
             });
@@ -40,10 +45,10 @@ if ($gumberCarousel == 'O') {
 } elseif ($gumberCarousel == 'L') {
     $document->addScriptDeclaration('jQuery(document).ready(function () {
             jQuery("#' . $owl_id . '").owlCarousel({
-                autoPlay: ' . $gumberspeed . ', 
+                autoplay: '. $autoplay .',
                 items : ' . $gumberitems . ',
-                pagination:' . $paginationbool . ', 
-                navigation:' . $navigationbool . ',     
+                dots:' . $paginationbool . ', 
+                nav:' . $navigationbool . ',     
                 itemsDesktop : [1199,3],
                 itemsDesktopSmall : [979,3]
             });
